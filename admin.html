@@ -17,42 +17,5 @@
     <textarea id="progDesc" placeholder="Description"></textarea>
     <button onclick="addProgramme()">Ajouter</button>
   </div>
-  <!-- Firebase SDKs -->
-<script type="module">
-  // Import the SDKs from Firebase CDN
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-  import { getStorage } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
-
-  // Your Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyBClL8ejJrLBaDSjKkSEdciwz_EjDXdchM",
-    authDomain: "zed-link.firebaseapp.com",
-    projectId: "zed-link",
-    storageBucket: "zed-link.appspot.com",
-    messagingSenderId: "493584644612",
-    appId: "1:493584644612:web:a1d92d3e2d916d82fb5351",
-    measurementId: "G-TPF5LF6KZ6"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-  const storage = getStorage(app);
-
-  // Example: Sign up function
-  window.signUp = function(email, password) {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        alert("User created: " + userCredential.user.email);
-      })
-      .catch((error) => {
-        alert("Error: " + error.message);
-      });
-  };
-</script>
-
 </body>
 </html>
