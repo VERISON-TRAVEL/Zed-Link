@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZED-LINK | Connexion</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>ZED-LINK</h1>
+    <h2>Connexion</h2>
+
+    <input type="email" id="login-email" placeholder="Email" required>
+    <input type="password" id="login-password" placeholder="Mot de passe" required>
+    <button id="login-btn">Se connecter</button>
+
+    <p><a href="#" id="show-register">Créer un compte</a> | <a href="admin.html">Espace admin</a></p>
+
+    <div id="register-section" style="display:none;">
+      <h2>Créer un compte</h2>
+      <input type="text" id="agency-name" placeholder="Nom de l'agence" required>
+      <input type="email" id="register-email" placeholder="Email" required>
+      <input type="password" id="register-password" placeholder="Mot de passe" required>
+      <input type="tel" id="phone" placeholder="Téléphone" required>
+      <input type="text" id="address" placeholder="Adresse complète" required>
+      <input type="file" id="justif-file" required>
+      <button id="register-btn">Créer le compte</button>
+      <p><a href="#" id="show-login">Déjà inscrit ? Connexion</a></p>
+    </div>
+  </div>
+</body>
+</html>
