@@ -7,11 +7,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="main-header">
+    <div class="logo">ZED-LINK</div>
+    <nav>
+      <a href="dashboard.html">Tableau de bord</a>
+      <a href="#">Programmes</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
   <div class="container">
-    <h2>Inscription</h2>
+    <h2>Créer un compte</h2>
     <input type="email" id="email" placeholder="Email" required />
     <input type="password" id="password" placeholder="Mot de passe" required />
-    <button id="registerBtn">Créer un compte</button>
+    <button id="registerBtn">S'inscrire</button>
 
     <hr />
 
@@ -20,6 +29,10 @@
     <input type="password" id="loginPassword" placeholder="Mot de passe" required />
     <button id="loginBtn">Se connecter</button>
   </div>
+
+  <footer class="main-footer">
+    <p>© 2025 ZED-LINK. Tous droits réservés.</p>
+  </footer>
 
   <script src="app.js"></script>
 </body>
