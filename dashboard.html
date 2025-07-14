@@ -1,144 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ZED-LINK | Tableau de bord</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .dashboard-container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .program-card {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 20px;
-      display: flex;
-      flex-direction: row;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-
-    .program-card img {
-      width: 200px;
-      height: 160px;
-      object-fit: cover;
-    }
-
-    .program-info {
-      padding: 15px;
-      flex: 1;
-    }
-
-    .program-info h3 {
-      margin: 0 0 10px;
-      color: #006fbe;
-    }
-
-    .program-info p {
-      margin: 5px 0;
-    }
-
-    .program-info button {
-      background: #ff9800;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 4px;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-
-    .logout-btn {
-      background: #c62828;
-      color: white;
-      padding: 8px 12px;
-      float: right;
-      margin: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #006fbe;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zed-Link | Tableau de bord</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <button class="logout-btn" onclick="logout()">Déconnexion</button>
-  <div class="dashboard-container">
-    <h1>Bienvenue sur ZED-LINK</h1>
-    <div id="programmes-list">
-      <p>Chargement des programmes...</p>
+  <header class="main-header">
+    <div class="logo">ZED-LINK</div>
+    <nav>
+      <a href="index.html">Déconnexion</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Tableau de bord client</h2>
+
+    <div class="card">
+      <h3>Solde : <span>0 DA</span></h3>
+    </div>
+
+    <div class="card">
+      <h3>Mes réservations</h3>
+      <ul>
+        <li>Aucune réservation encore effectuée.</li>
+      </ul>
     </div>
   </div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-  const firebaseConfig = {
-  apiKey: "AIzaSyB_V5NcX1ohSE1dTqX13Y9pb4bKg0lVShA",
-  authDomain: "zed-link-773e9.firebaseapp.com",
-  projectId: "zed-link-773e9",
-  storageBucket: "zed-link-773e9.firebasestorage.app",
-  messagingSenderId: "914423341806",
-  appId: "1:914423341806:web:657899c62392f58d6c89ff"
-};
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth();
-    const db = getFirestore();
-
-    const list = document.getElementById("programmes-list");
-
-    onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-        alert("Veuillez vous connecter");
-        window.location.href = "index.html";
-      } else {
-        // Charger les programmes depuis Firestore
-        const snapshot = await getDocs(collection(db, "programmes"));
-        list.innerHTML = "";
-
-        if (snapshot.empty) {
-          list.innerHTML = "<p>Aucun programme disponible.</p>";
-        }
-
-        snapshot.forEach(doc => {
-          const data = doc.data();
-          const card = document.createElement("div");
-          card.className = "program-card";
-
-          card.innerHTML = `
-            <img src="${data.imageURL || 'https://via.placeholder.com/200x160'}" alt="${data.titre}" />
-            <div class="program-info">
-              <h3>${data.titre}</h3>
-              <p><strong>Destination:</strong> ${data.destination}</p>
-              <p><strong>Départ:</strong> ${data.dateDepart}</p>
-              <p><strong>Prix:</strong> ${data.prix} DA</p>
-              <p><strong>Places:</strong> ${data.placesDispo}</p>
-              <button onclick="alert('Fonction Réserver à ajouter')">Réserver</button>
-            </div>
-          `;
-          list.appendChild(card);
-        });
-      }
-    });
-
-    window.logout = function () {
-      signOut(auth).then(() => {
-        window.location.href = "index.html";
-      });
-    };
-  </script>
+  <footer class="main-footer">
+    <p>© 2025 ZED-LINK. Tous droits réservés.</p>
+  </footer>
 </body>
 </html>
